@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import Stats from './Stats.js';
+import Measurements from './Measurements.js';
+import BodyFat from './BodyFat.js';
+//import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        <span>Swords Fitness Hub</span>
+        <span>Physical Assessment</span>
+      </div>
+      <div>
+        <ul>
+          <li>Name:</li>
+          <li>Age:</li>
+          <li>Goals:</li>
+        </ul>
+      </div>
+      <Stats />
+      <Measurements />
+      <BodyFat />
     </div>
   );
 }
