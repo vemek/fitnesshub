@@ -1,16 +1,20 @@
 import { useState } from 'react';
-import Report from './Report.js';
+import Assessment from './models/Assessment.js';
+import EditAssessment from './EditAssessment.js';
 import EditReport from './EditReport.js';
+import Report from './Report.js';
 import User from './models/User.js';
 
 function App() {
   const [activeView, setActiveView] = useState("editReport");
   const [user, setUser] = useState(User.new());
-  const [assessmentToEditId, setAssessmentToEditId] = useState();
+  const [assessmentToEdit, setAssessmentToEdit] = useState();
   let display;
 
   function handleChangeView(view) {
-    return () => setActiveView(view);
+    return () => {
+      setActiveView(view);
+    };
   }
 
   function handleUpdateUser(attribute) {
@@ -23,33 +27,62 @@ function App() {
 
   function handleUpdateAssessment(attribute) {
     return (e) => {
-      const assessmentToEdit = user.assessments.find((assessment) => assessment.id === assessmentToEditId)
-
       const newAssessment = {...assessmentToEdit};
       newAssessment[attribute] = e.target.value;
 
-      const newAssessments = [...user.assessments];
-      newAssessments.
+      let newAssessments = [...user.assessments];
+      const indexToOverride = newAssessments.map((a) => a.id).indexOf(assessmentToEdit.id);
+      newAssessments[indexToOverride] = newAssessment;
 
-      handleUpdateUser("assessments")(assessments);
+      setUser({...user, assessments: newAssessments})
+      setAssessmentToEdit(newAssessment);
+    }
+  }
+
+  function handleAddAssessment() {
+    const newAssessment = Assessment.new();
+    const newAssessments = [...user.assessments, newAssessment];
+    setUser({...user, assessments: newAssessments})
+    setAssessmentToEdit(newAssessment);
+    setActiveView('editAssessment');
+  }
+
+  function handleEditAssessment(assessment) {
+    return () => {
+      setAssessmentToEdit(assessment);
+      setActiveView('editAssessment');
     }
   }
 
   switch (activeView) {
-    case "addAssessment":
+    case "editAssessment":
       display = (
-        <addAssessment user={user} assessment={assessmentToEdit} onEditReport={handleChangeView('editReport')} onUpdateAssessment={handleUpdateAssessment} />
+        <EditAssessment
+          user={user}
+          assessment={assessmentToEdit}
+          onUpdateAssessment={handleUpdateAssessment}
+          onDone={handleChangeView('editReport')}
+        />
       );
       break;
     case "editReport":
       display = (
-        <EditReport user={user} onDisplayReport={handleChangeView('report')} onAddAssessment={handleAddAssessment} onUpdateUser={handleUpdateUser} />
+        <EditReport
+          user={user}
+          onDisplayReport={handleChangeView('report')}
+          onAddAssessment={handleAddAssessment}
+          onUpdateUser={handleUpdateUser}
+          onEditAssessment={handleEditAssessment}
+        />
       );
       break;
     default:
     case "report":
       display = (
-        <Report user={user} onEditReport={handleChangeView('editReport')}/>
+        <Report
+          user={user}
+          onEditReport={handleChangeView('editReport')}
+        />
       );
       break;
   }

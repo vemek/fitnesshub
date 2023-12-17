@@ -8,7 +8,7 @@ class Assessment {
     posHeadNeck, posShoulders, posUpperBack, posLowerBack, posHips, posLegsFeet,
   }) {
     Object.assign(this, {
-      date, bloodPressureSystolic, bloodPressureDiastolic, weight,
+      id, date, bloodPressureSystolic, bloodPressureDiastolic, weight,
       msNeck, msUpperArm, msChest, msUpperAbs, msLowerAbs, msHips, msThigh, msCalf,
       bfBicep, bfTricep, bfSubscap, bfSuper, bfLeanMass, bfPercentage,
       flHamstring, flChest, flOther,

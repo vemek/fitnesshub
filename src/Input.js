@@ -1,6 +1,6 @@
-function Input({ type, value, onChange }) {
+function Input({ type, value, className, onChange }) {
   return (
-    <input className="px-2 py-1 border-solid border-2 border-indigo-400 rounded-lg" type={type} onChange={onChange} value={value} />
+    <input className={`px-2 py-1 border-solid border-2 border-indigo-400 rounded-lg ${className}`} type={type} onChange={onChange} value={value} />
   );
 }
 
