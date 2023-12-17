@@ -1,20 +1,16 @@
 class User {
-  constructor(name, age, goals, bloodPressure, assessments) {
-    this.name = name;
-    this.age = age;
-    this.goals = goals;
-    this.bloodPressure = bloodPressure;
-    this.assessments = assessments;
+  constructor({name, age, height, goals, assessments}) {
+    Object.assign(this, {name, age, height, goals, assessments});
   }
 
   static new() {
-    return new User(
-      '',
-      0,
-      '',
-      '',
-      []
-    );
+    return new User({
+      name: '',
+      age: 0,
+      height: '',
+      goals: '',
+      assessments: [],
+    });
   }
 }
 
