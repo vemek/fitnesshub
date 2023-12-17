@@ -2,8 +2,6 @@ import { useState } from 'react';
 import Report from './Report.js';
 import EditReport from './EditReport.js';
 import User from './models/User.js';
-//import logo from './logo.svg';
-import './App.css';
 
 function App() {
   const [displayReport, setDisplayReport] = useState(false);
@@ -31,7 +29,11 @@ function App() {
       <EditReport user={user} onDisplayReport={handleDisplayReport} onUpdateUser={handleUpdateUserForAttribute} />
     );
   }
-  return display;
+  return (
+    <div className="m-5">
+      {display}
+    </div>
+  );
 }
 
 export default App;
