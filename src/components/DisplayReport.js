@@ -3,16 +3,16 @@ import Measurements from './Measurements.js';
 import BodyFat from './BodyFat.js';
 import Button from './Button.js';
 
-function Report({user, onEditReport}) {
+function DisplayReport({user, onEditReport}) {
   return (
-    <div>
+    <div className="grid">
+      <h1 className="text-4xl">Swords Fitness Hub</h1>
+      <h2 className="text-2xl">Physical Assessment</h2>
       <div>
-        <span>Swords Fitness Hub</span>
-        <span>Physical Assessment</span>
+        <Button onClick={onEditReport} text="Edit Report" />
       </div>
-      <Button onClick={onEditReport} text="Edit Report" />
       <div>
-        <ul>
+        <ul className="flex gap-2">
           <li>Name: {user.name}</li>
           <li>Age: {user.age}</li>
           <li>Height: {user.height}</li>
@@ -25,4 +25,4 @@ function Report({user, onEditReport}) {
     </div>
   );
 }
-export default Report;
+export default DisplayReport;

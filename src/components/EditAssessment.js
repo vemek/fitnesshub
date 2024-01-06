@@ -16,7 +16,7 @@ function EditAssessment({ user, assessment, onDone, onUpdateAssessment }) {
       </div>
       <div className="flex space-x-2">
         <div>
-          Button onClick={onDone} text="Done" />
+          <Button onClick={onDone} text="Done" />
         </div>
       </div>
     </div>

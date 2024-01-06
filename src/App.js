@@ -1,19 +1,22 @@
 import { useState } from 'react';
 import Assessment from './models/Assessment.js';
-import EditAssessment from './EditAssessment.js';
-import EditReport from './EditReport.js';
-import Report from './Report.js';
+import EditAssessment from './components/EditAssessment.js';
+import Reports from './components/Reports.js';
+import EditReport from './components/EditReport.js';
+import Nav from './components/Nav.js';
+import DisplayReport from './components/DisplayReport.js';
+import Route from './Route.js';
 import User from './models/User.js';
 
 function App() {
-  const [activeView, setActiveView] = useState("editReport");
+  const [activeRoute, setActiveRoute] = useState(Route.Reports);
   const [user, setUser] = useState(User.new());
   const [assessmentToEdit, setAssessmentToEdit] = useState();
   let display;
 
-  function handleChangeView(view) {
+  function handleChangeRoute(view) {
     return () => {
-      setActiveView(view);
+      setActiveRoute(view);
     };
   }
 
@@ -44,51 +47,72 @@ function App() {
     const newAssessments = [...user.assessments, newAssessment];
     setUser({...user, assessments: newAssessments})
     setAssessmentToEdit(newAssessment);
-    setActiveView('editAssessment');
+    setActiveRoute(Route.EditAssessment);
   }
 
   function handleEditAssessment(assessment) {
     return () => {
       setAssessmentToEdit(assessment);
-      setActiveView('editAssessment');
+      setActiveRoute(Route.EditAssessment);
     }
   }
 
-  switch (activeView) {
-    case "editAssessment":
+  function handleShowReport(user) {
+    return () => {
+      // TODO: set active user
+      setActiveRoute(Route.DisplayReport);
+    }
+  }
+
+  switch (activeRoute) {
+    default:
+    case Route.Reports:
+      display = (
+        <Reports
+          user={user}
+          onClickReport={handleShowReport}
+        />
+      );
+      break;
+    case Route.EditAssessment:
       display = (
         <EditAssessment
           user={user}
           assessment={assessmentToEdit}
           onUpdateAssessment={handleUpdateAssessment}
-          onDone={handleChangeView('editReport')}
+          onDone={handleChangeRoute('editReport')}
         />
       );
       break;
-    case "editReport":
+    case Route.EditReport:
       display = (
         <EditReport
           user={user}
-          onDisplayReport={handleChangeView('report')}
+          onDisplayReport={handleChangeRoute('report')}
           onAddAssessment={handleAddAssessment}
           onUpdateUser={handleUpdateUser}
           onEditAssessment={handleEditAssessment}
         />
       );
       break;
-    default:
-    case "report":
+    case Route.DisplayReport:
       display = (
-        <Report
+        <DisplayReport
           user={user}
-          onEditReport={handleChangeView('editReport')}
+          onEditReport={handleChangeRoute('editReport')}
         />
       );
       break;
   }
   return (
-    <div className="m-5">
-      {display}
+    <div className="grid grid-cols-[7rem_1fr] gap-1 h-screen">
+      <Nav
+        route={activeRoute}
+        changeRoute={handleChangeRoute}
+      />
+      <main className="my-4">
+        {display}
+      </main>
     </div>
   );
 }

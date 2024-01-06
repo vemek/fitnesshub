@@ -5,7 +5,7 @@ class User {
 
   static new() {
     return new User({
-      name: '',
+      name: 'Ian Malcolm',
       age: 0,
       height: '',
       goals: '',
