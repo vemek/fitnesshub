@@ -43,11 +43,14 @@ function App() {
   }
 
   function handleAddAssessment() {
-    const newAssessment = Assessment.new();
-    const newAssessments = [...user.assessments, newAssessment];
-    setUser({...user, assessments: newAssessments})
-    setAssessmentToEdit(newAssessment);
-    setActiveRoute(Route.EditAssessment);
+    return (_user) => {
+      // TODO: set active user
+      const newAssessment = Assessment.new();
+      const newAssessments = [...user.assessments, newAssessment];
+      setUser({...user, assessments: newAssessments})
+      setAssessmentToEdit(newAssessment);
+      setActiveRoute(Route.EditAssessment);
+    }
   }
 
   function handleEditAssessment(assessment) {
@@ -71,6 +74,7 @@ function App() {
         <Reports
           user={user}
           onClickReport={handleShowReport}
+          onAddAssessment={handleAddAssessment}
         />
       );
       break;
