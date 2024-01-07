@@ -1,21 +1,9 @@
-const SIZES = Object.freeze({
-  small: ["w-24", "w-12"],
-  normal: ["w-64", "w-52"],
-})
-
-function Input({ type, value, onChange, unit, size = "normal" }) {
-  console.log(size);
-  let [outerWrapperSize, innerWrapperSize] = SIZES[size];
-  if (unit === undefined) {
-    innerWrapperSize = "w-full";
-  }
-
+function Input({ type, value, onChange, unit }) {
+  const marginForLabel = unit === undefined ? "0" : "6";
   return (
-    <div className={`whitespace-nowrap inline-block border-solid border-2 border-cyan-500 has-[:focus]:border-cyan-400 rounded-lg px-2 py-1  ${outerWrapperSize}`}>
-      <div className={`${innerWrapperSize} inline-block`}>
-        <input className={`focus:outline-none w-full`} type={type} onChange={onChange} value={value} />
-      </div>
-      <span className="ml-2">{unit}</span>
+    <div className="inline-block w-full border-solid border-2 border-cyan-500 has-[:focus]:border-cyan-400 rounded-lg px-2 py-1">
+      <input className={`focus:outline-none w-full min-w-10 pr-${marginForLabel}`} type={type} onChange={onChange} value={value} />
+      <span className={`-ml-${marginForLabel}`}>{unit}</span>
     </div>
   );
 }

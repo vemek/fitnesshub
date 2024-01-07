@@ -11,9 +11,9 @@ function EditAssessment({ user, assessment, onDone, onUpdateAssessment }) {
 
       <div className="justify-self-end">Blood Pressure</div>
       <div className="flex gap-2 w-full items-center justify-between">
-        <Input type="number" size="small" onChange={onUpdateAssessment('bloodPressureSystolic')} value={assessment.bloodPressureSystolic} />
+        <Input type="number" onChange={onUpdateAssessment('bloodPressureSystolic')} value={assessment.bloodPressureSystolic} />
         <div className="grow text-center">/</div>
-        <Input type="number" size="small" unit="bp" onChange={onUpdateAssessment('bloodPressureDiastolic')} value={assessment.bloodPressureDiastolic} />
+        <Input type="number" onChange={onUpdateAssessment('bloodPressureDiastolic')} value={assessment.bloodPressureDiastolic} />
       </div>
 
       <div className="justify-self-end">Weight</div>
@@ -22,22 +22,22 @@ function EditAssessment({ user, assessment, onDone, onUpdateAssessment }) {
       <div className="col-span-2 text-lg underline mt-4">Measurements</div>
 
       <div className="justify-self-end">Neck</div>
-      <div><Input type="number" onChange={onUpdateAssessment('msNeck')} value={assessment.msNeck} /> cm</div>
+      <div><Input type="number" onChange={onUpdateAssessment('msNeck')} value={assessment.msNeck} unit="cm" /></div>
 
       <div className="justify-self-end">Upper arm</div>
-      <div><Input type="number" onChange={onUpdateAssessment('msUpperArm')} value={assessment.msUpperArm} /> cm</div>
+      <div><Input type="number" onChange={onUpdateAssessment('msUpperArm')} value={assessment.msUpperArm} unit="cm" /></div>
 
       <div className="justify-self-end">Chest</div>
-      <div><Input type="number" onChange={onUpdateAssessment('msChest')} value={assessment.msChest} /> cm</div>
+      <div><Input type="number" onChange={onUpdateAssessment('msChest')} value={assessment.msChest} unit="cm" /></div>
 
       <div className="justify-self-end">Upper abs</div>
-      <div><Input type="number" onChange={onUpdateAssessment('msUpperAbs')} value={assessment.msUpperAbs} /> cm</div>
+      <div><Input type="number" onChange={onUpdateAssessment('msUpperAbs')} value={assessment.msUpperAbs} unit="cm" /></div>
 
       <div className="justify-self-end">Lower abs</div>
-      <div><Input type="number" onChange={onUpdateAssessment('msLowerAbs')} value={assessment.msLowerAbs} /> cm</div>
+      <div><Input type="number" onChange={onUpdateAssessment('msLowerAbs')} value={assessment.msLowerAbs} unit="cm" /></div>
 
       <div className="justify-self-end">Hips</div>
-      <div><Input type="number" onChange={onUpdateAssessment('msLowerAbs')} value={assessment.msLowerAbs} /> cm</div>
+      <div><Input type="number" onChange={onUpdateAssessment('msLowerAbs')} value={assessment.msLowerAbs} unit="cm" /></div>
 
       <div className="col-span-2 mt-4 justify-self-end">
         <Button onClick={onDone} text="Done" />
