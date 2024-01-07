@@ -10,10 +10,10 @@ function EditAssessment({ user, assessment, onDone, onUpdateAssessment }) {
       <div><Input type="text" onChange={onUpdateAssessment('date')} value={assessment.date} /></div>
 
       <div className="justify-self-end">Blood Pressure</div>
-      <div>
-        <Input type="number" className="w-20" onChange={onUpdateAssessment('bloodPressureSystolic')} value={assessment.bloodPressureSystolic} />
-        <span className="mx-4">/</span>
-        <Input type="number" className="w-20" onChange={onUpdateAssessment('bloodPressureDiastolic')} value={assessment.bloodPressureDiastolic} />
+      <div className="flex gap-2 w-full items-center justify-between">
+        <Input type="number" size="small" onChange={onUpdateAssessment('bloodPressureSystolic')} value={assessment.bloodPressureSystolic} />
+        <div className="grow text-center">/</div>
+        <Input type="number" size="small" unit="bp" onChange={onUpdateAssessment('bloodPressureDiastolic')} value={assessment.bloodPressureDiastolic} />
       </div>
 
       <div className="justify-self-end">Weight</div>
