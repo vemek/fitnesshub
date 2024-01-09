@@ -1,6 +1,7 @@
 const Route = Object.freeze({
-  Reports:        Symbol("reports"),
-  DisplayReport:  Symbol("display-report"),
+  ClientList:     Symbol("clients"),
+  EditClient:     Symbol("edit-client"),
+  Report:         Symbol("report"),
   EditAssessment: Symbol("edit-assessment"),
   EditReport:     Symbol("edit-report"),
   Settings:       Symbol("settings")

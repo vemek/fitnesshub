@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import Assessment from './models/Assessment.js';
 import EditAssessment from './components/EditAssessment.js';
-import Reports from './components/Reports.js';
-import EditReport from './components/EditReport.js';
+import ClientList from './components/ClientList.js';
 import Nav from './components/Nav.js';
-import DisplayReport from './components/DisplayReport.js';
+import Report from './components/Report.js';
+import EditClient from './components/EditClient.js';
 import Route from './Route.js';
 import User from './models/User.js';
 
@@ -63,18 +63,26 @@ function App() {
   function handleShowReport(user) {
     return () => {
       // TODO: set active user
-      setActiveRoute(Route.DisplayReport);
+      setActiveRoute(Route.Report);
+    }
+  }
+
+  function handleEditClient(user) {
+    return () => {
+      // TODO: set active user
+      setActiveRoute(Route.EditClient);
     }
   }
 
   switch (activeRoute) {
     default:
-    case Route.Reports:
+    case Route.ClientList:
       display = (
-        <Reports
+        <ClientList
           user={user}
           onClickReport={handleShowReport}
           onAddAssessment={handleAddAssessment}
+          onEditClient={handleEditClient}
         />
       );
       break;
@@ -84,26 +92,23 @@ function App() {
           user={user}
           assessment={assessmentToEdit}
           onUpdateAssessment={handleUpdateAssessment}
-          onDone={handleChangeRoute('editReport')}
+          onDone={handleChangeRoute(Route.ClientList)}
         />
       );
       break;
-    case Route.EditReport:
+    case Route.Report:
       display = (
-        <EditReport
+        <Report
           user={user}
-          onDisplayReport={handleChangeRoute('report')}
-          onAddAssessment={handleAddAssessment}
+        />
+      );
+      break;
+    case Route.EditClient:
+      display = (
+        <EditClient
+          user={user}
           onUpdateUser={handleUpdateUser}
-          onEditAssessment={handleEditAssessment}
-        />
-      );
-      break;
-    case Route.DisplayReport:
-      display = (
-        <DisplayReport
-          user={user}
-          onEditReport={handleChangeRoute('editReport')}
+          onDone={handleChangeRoute(Route.ClientList)}
         />
       );
       break;
