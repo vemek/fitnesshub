@@ -1,13 +1,27 @@
 function Stats({assessments}) {
-  return assessments.map((assessment) => statAssessment(assessment));
-}
+  const bpRow = [
+    <div>Blood pressure:</div>
+  ].concat(assessments.map(a => {
+    return (<div>{a.bloodPressureSystolic} / {a.bloodPressureDiastolic}</div>);
+  }));
 
-function statAssessment(assessment) {
+  const heartRateRow = [
+    <div>Heart rate:</div>
+  ].concat(assessments.map(a => {
+    return (<div>{a.heartRate}</div>);
+  }));
+
+  const weightRow = [
+    <div>Weight:</div>
+  ].concat(assessments.map(a => {
+    return (<div>{a.weight}</div>);
+  }));
+
   return (
-    <div className="grid">
-      <div>Blood pressure:</div><div>{assessment.bloodPressureSystolic} / {assessment.bloodPressureDiastolic}</div>
-      <div>Heart rate:</div><div>{assessment.heartRate}</div>
-      <div>Weight:</div><div>{assessment.weight}</div>
+    <div className="grid grid-rows-3 grid-flow-col">
+      {bpRow}
+      {heartRateRow}
+      {weightRow}
     </div>
   );
 }

@@ -4,18 +4,22 @@ import BodyFat from './BodyFat.js';
 
 function Report({user}) {
   return (
-    <div>
+    <div className="max-w-4xl">
       <h1 className="text-4xl">Swords Fitness Hub</h1>
       <h2 className="text-2xl">Physical Assessment - {user.name}</h2>
-      <div className="grid grid-cols-2 mb-4">
-        <div className="border-t-2 border-l-2 border-black">Age</div>
-        <div className="border-t-2 border-l-2 border-r-2 border-black">{user.age}</div>
-
-        <div className="border-t-2 border-l-2 border-black">Height</div>
-        <div className="border-t-2 border-l-2 border-r-2 border-black">{user.height}</div>
-
-        <div className="border-t-2 border-l-2 border-b-2 border-black">Goals</div>
-        <div className="border-2 border-black">{user.goals}</div>
+      <div className="flex gap-2 justify-between my-4">
+        <div>
+          <div className="">Age</div>
+          <div className="">{user.age}</div>
+        </div>
+        <div>
+          <div className="">Height</div>
+          <div className="">{user.height}</div>
+        </div>
+        <div>
+          <div className="">Goals</div>
+          <div className="">{user.goals}</div>
+        </div>
       </div>
       <Stats assessments={user.assessments} />
       <Measurements />
