@@ -80,9 +80,10 @@ function App() {
       display = (
         <ClientList
           user={user}
+          onEditClient={handleEditClient}
           onClickReport={handleShowReport}
           onAddAssessment={handleAddAssessment}
-          onEditClient={handleEditClient}
+          onEditAssessment={handleEditAssessment}
         />
       );
       break;
@@ -119,7 +120,7 @@ function App() {
         route={activeRoute}
         changeRoute={handleChangeRoute}
       />
-      <main className="my-4">
+      <main className="m-4 max-w-4xl">
         {display}
       </main>
     </div>
