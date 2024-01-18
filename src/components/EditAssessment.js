@@ -16,6 +16,9 @@ function EditAssessment({ user, assessment, onDone, onUpdateAssessment }) {
         <Input type="number" onChange={onUpdateAssessment('bloodPressureDiastolic')} value={assessment.bloodPressureDiastolic} />
       </div>
 
+      <div>Heart rate</div>
+      <div><Input type="number" onChange={onUpdateAssessment('heartRate')} value={assessment.heartRate} unit="bps" /></div>
+
       <div>Weight</div>
       <div><Input type="number" onChange={onUpdateAssessment('weight')} value={assessment.weight} unit="kg" /></div>
 

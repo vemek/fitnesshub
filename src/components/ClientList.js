@@ -14,7 +14,7 @@ function assessmentRow(user, assessment, onEditAssessment) {
       <div className="ml-4">
         {assessment.date}
       </div>
-      <div className="flex gap-2 flex-wrap justify-end">
+      <div className="flex gap-2 flex-wrap justify-center sm:justify-end">
         <div>
           <Button text="Edit Assessment" onClick={onEditAssessment(assessment)} />
         </div>
@@ -32,9 +32,9 @@ function clientRow(id, user, onEditClient, onClickReport, onAddAssessment, onEdi
     <div className="">
       <div className="flex items-center justify-between gap-2 p-4 bg-slate-200 rounded">
         <div className="text-xl">
-          <a href={"#report/" + user.name} onClick={onClickReport(user)}>{user.name}</a>
+          <a href={"#report/" + user.name} onClick={onClickReport(user)}>{user.name || "Unknown Client"}</a>
         </div>
-        <div className="flex gap-2 flex-wrap justify-end">
+        <div className="flex gap-2 flex-wrap items-center justify-center sm:justify-end">
           <div>
             <Button text="View Report" type="secondary" onClick={onClickReport(user)} />
           </div>
@@ -56,16 +56,24 @@ function clientRow(id, user, onEditClient, onClickReport, onAddAssessment, onEdi
   );
 }
 
-function ClientList({ user, onEditClient, onClickReport, onAddAssessment, onEditAssessment }) {
+function ClientList({ user, onAddClient, onEditClient, onClickReport, onAddAssessment, onEditAssessment }) {
   // TODO: multiple clients
-  const clientRows = [1, 2, 3].map(id => clientRow(id, user, onEditClient, onClickReport, onAddAssessment, onEditAssessment));
+  const clientRows = [1].map(id => clientRow(id, user, onEditClient, onClickReport, onAddAssessment, onEditAssessment));
+  const placeholder = (
+    <>
+      <div className="mb-4">
+        Create your first client to start generating reports.
+      </div>
+      <div>
+        <Button onClick={onAddClient} text="Add new client" />
+      </div>
+    </>
+  );
+  const display = clientRows.length == 0 ? placeholder : clientRows;
   return (
     <div>
       <div className="mb-2 text-2xl">Client List</div>
-      {clientRows}
-      <div>
-        <Button text="Add new client" />
-      </div>
+      {display}
     </div>
   );
 }

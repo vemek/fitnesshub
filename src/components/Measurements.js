@@ -1,150 +1,48 @@
-function Measurements() {
+const GRID_COLS = Object.freeze([
+  "grid-cols-1",
+  "grid-cols-[9rem_1fr]",
+  "grid-cols-[9rem_1fr_1fr]",
+  "grid-cols-[9rem_1fr_1fr_1fr]",
+]);
+
+function Measurements({assessments}) {
+  // neck, upper arm, chest, upper abs, lower abs, hips, thigh, calf
+  const headerRow = [
+    <div className="bg-slate-200 rounded-tl"></div>
+  ].concat(assessments.map((assessment, i) => {
+    const assessmentTitle = i === 0 ? "Initial Assessment" : `Reassessment ${i}`;
+    const roundedClass = i === assessments.length - 1 ? "rounded-tr" : "";
+    return (<div className={`p-1 text-lg bg-slate-200 ${roundedClass}`}>{assessmentTitle}</div>);
+  }));
+
+  const neckRow = [
+    <div className="p-1 text-lg bg-slate-200">Neck</div>
+  ].concat(assessments.map(a => {
+    return (<div className="p-1">{a.msNeck} cm</div>);
+  }));
+
+  const heartRateRow = [
+    <div className="p-1 text-lg bg-slate-200">Heart rate</div>
+  ].concat(assessments.map(a => {
+    return (<div className="p-1">{a.heartRate} bps</div>);
+  }));
+
+  const weightRow = [
+    <div className="p-1 text-lg bg-slate-200 rounded-bl">Weight</div>
+  ].concat(assessments.map(a => {
+    return (<div className="p-1">{a.weight} kg</div>);
+  }));
+
+  const grid_cols_class = GRID_COLS[assessments.length];
+
   return (
-      <div className="table w-full">
-        <div className="table-header-group">
-          <div className="table-row">
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-              Location of Measurement
-            </div>
-            <div className="table-cell text-left">
-              Assessment
-            </div>
-            <div className="table-cell text-left">
-              Reassessment 1
-            </div>
-            <div className="table-cell text-left">
-              Reassessment 2
-            </div>
-            <div className="table-cell text-left">
-              Reassessment 3
-            </div>
-          </div>
-        </div>
-        <div className="table-row-group">
-          <div className="table-row">
-            <div className="table-cell text-left">
-              Neck
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-          </div>
-          <div className="table-row">
-            <div className="table-cell text-left">
-              Upper Arm
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-          </div>
-          <div className="table-row">
-            <div className="table-cell text-left">
-              Chest
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-          </div>
-          <div className="table-row">
-            <div className="table-cell text-left">
-              Upper Abs
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-          </div>
-          <div className="table-row">
-            <div className="table-cell text-left">
-              Lower Abs
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-          </div>
-          <div className="table-row">
-            <div className="table-cell text-left">
-              Hips
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-          </div>
-          <div className="table-row">
-            <div className="table-cell text-left">
-              Thigh
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-          </div>
-          <div className="table-row">
-            <div className="table-cell text-left">
-              Calf
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-            <div className="table-cell text-left">
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className={`grid ${grid_cols_class} mb-4 bg-slate-100 rounded`}>
+      {headerRow}
+      {neckRow}
+      {heartRateRow}
+      {weightRow}
+    </div>
   );
 }
+
 export default Measurements;

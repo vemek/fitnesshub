@@ -67,6 +67,11 @@ function App() {
     }
   }
 
+  function handleAddClient() {
+    // TODO: create client
+    setActiveRoute(Route.EditClient);
+  }
+
   function handleEditClient(user) {
     return () => {
       // TODO: set active user
@@ -80,6 +85,7 @@ function App() {
       display = (
         <ClientList
           user={user}
+          onAddClient={handleAddClient}
           onEditClient={handleEditClient}
           onClickReport={handleShowReport}
           onAddAssessment={handleAddAssessment}
@@ -115,12 +121,13 @@ function App() {
       break;
   }
   return (
-    <div className="grid grid-cols-[7rem_1fr] gap-1 h-screen">
+    <div className="grid grid-cols-[7rem_1fr] h-screen">
       <Nav
         route={activeRoute}
         changeRoute={handleChangeRoute}
+        onAddClient={handleAddClient}
       />
-      <main className="m-4 max-w-4xl">
+      <main className="m-4 min-w-10 max-w-4xl">
         {display}
       </main>
     </div>

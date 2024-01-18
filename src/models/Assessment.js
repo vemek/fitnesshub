@@ -1,6 +1,6 @@
 class Assessment {
   constructor({
-    id, date, bloodPressureSystolic, bloodPressureDiastolic, weight,
+    id, date, bloodPressureSystolic, bloodPressureDiastolic, heartRate, weight,
     msNeck, msUpperArm, msChest, msUpperAbs, msLowerAbs, msHips, msThigh, msCalf,
     bfBicep, bfTricep, bfSubscap, bfSuper, bfLeanMass, bfPercentage,
     flHamstring, flChest, flOther,
@@ -8,7 +8,7 @@ class Assessment {
     posHeadNeck, posShoulders, posUpperBack, posLowerBack, posHips, posLegsFeet,
   }) {
     Object.assign(this, {
-      id, date, bloodPressureSystolic, bloodPressureDiastolic, weight,
+      id, date, bloodPressureSystolic, bloodPressureDiastolic, heartRate, weight,
       msNeck, msUpperArm, msChest, msUpperAbs, msLowerAbs, msHips, msThigh, msCalf,
       bfBicep, bfTricep, bfSubscap, bfSuper, bfLeanMass, bfPercentage,
       flHamstring, flChest, flOther,
