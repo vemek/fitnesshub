@@ -8,8 +8,8 @@ function Nav({ route, changeRoute, onAddClient }) {
   const inactiveClasses = `bg-cyan-800 ${commonClasses}`;
 
   return (
-    <nav className="w-28 bg-cyan-900">
-      <ul className="flex flex-col items-center gap-2 my-4">
+    <nav className="md:w-28 bg-cyan-900">
+      <ul className="flex md:flex-col justify-center md:justify-start items-center gap-2 my-4">
         <li className={route === Route.Reports ? activeClasses : inactiveClasses}>
           <a href="#clients" onClick={changeRoute(Route.Reports)}><TbReportAnalytics size="4rem" /></a>
         </li>

@@ -121,7 +121,7 @@ function App() {
       break;
   }
   return (
-    <div className="grid grid-cols-[7rem_1fr] h-screen">
+    <div className="grid md:grid-cols-[7rem_1fr] md:h-screen">
       <Nav
         route={activeRoute}
         changeRoute={handleChangeRoute}
