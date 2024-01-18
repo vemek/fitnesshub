@@ -28,6 +28,14 @@ function assessmentRow(user, assessment, onEditAssessment) {
 
 function clientRow(id, user, onEditClient, onClickReport, onAddAssessment, onEditAssessment) {
   const assessmentRows = user.assessments.map(assessment => assessmentRow(user, assessment, onEditAssessment));
+  const placeholder = (
+    <>
+      <div className="col-span-2">
+        Add client assessments to start generating reports.
+      </div>
+    </>
+  );
+  const display = assessmentRows.length == 0 ? placeholder : assessmentRows;
   return (
     <div className="">
       <div className="flex items-center justify-between gap-2 p-4 bg-slate-200 rounded">
@@ -50,7 +58,7 @@ function clientRow(id, user, onEditClient, onClickReport, onAddAssessment, onEdi
         </div>
       </div>
       <div className="grid grid-cols-[auto_1fr] items-center gap-2 mb-4 p-4 bg-slate-100 rounded">
-        {assessmentRows}
+        {display}
       </div>
     </div>
   );
