@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/fitnesshub/static/css/main.7bcfeed1.css",
-    "main.js": "/fitnesshub/static/js/main.18d9bf47.js",
+    "main.css": "/fitnesshub/static/css/main.d81669f9.css",
+    "main.js": "/fitnesshub/static/js/main.1500698c.js",
     "static/js/787.b07e8246.chunk.js": "/fitnesshub/static/js/787.b07e8246.chunk.js",
     "index.html": "/fitnesshub/index.html",
-    "main.7bcfeed1.css.map": "/fitnesshub/static/css/main.7bcfeed1.css.map",
-    "main.18d9bf47.js.map": "/fitnesshub/static/js/main.18d9bf47.js.map",
+    "main.d81669f9.css.map": "/fitnesshub/static/css/main.d81669f9.css.map",
+    "main.1500698c.js.map": "/fitnesshub/static/js/main.1500698c.js.map",
     "787.b07e8246.chunk.js.map": "/fitnesshub/static/js/787.b07e8246.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7bcfeed1.css",
-    "static/js/main.18d9bf47.js"
+    "static/css/main.d81669f9.css",
+    "static/js/main.1500698c.js"
   ]
 }
