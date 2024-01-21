@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Assessment from './models/Assessment.js';
 import EditAssessment from './components/EditAssessment.js';
 import ClientList from './components/ClientList.js';
@@ -10,9 +10,15 @@ import User from './models/User.js';
 
 function App() {
   const [activeRoute, setActiveRoute] = useState(Route.Reports);
-  const [user, setUser] = useState(User.new());
+  const [user, setUser] = useState(() => {
+    return JSON.parse(localStorage.getItem("user")) || User.new();
+  });
   const [assessmentToEdit, setAssessmentToEdit] = useState();
   let display;
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
 
   function handleChangeRoute(view) {
     return () => {

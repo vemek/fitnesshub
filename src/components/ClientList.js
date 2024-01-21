@@ -35,7 +35,7 @@ function clientRow(id, user, onEditClient, onClickReport, onAddAssessment, onEdi
       </div>
     </>
   );
-  const display = assessmentRows.length == 0 ? placeholder : assessmentRows;
+  const display = assessmentRows.length === 0 ? placeholder : assessmentRows;
   return (
     <div className="">
       <div className="flex items-center justify-between gap-2 p-4 bg-slate-200 rounded">
@@ -77,7 +77,7 @@ function ClientList({ user, onAddClient, onEditClient, onClickReport, onAddAsses
       </div>
     </>
   );
-  const display = clientRows.length == 0 ? placeholder : clientRows;
+  const display = clientRows.length === 0 ? placeholder : clientRows;
   return (
     <div>
       <div className="mb-2 text-2xl">Client List</div>
