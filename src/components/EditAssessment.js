@@ -17,7 +17,7 @@ function EditAssessment({ user, assessment, onDone, onUpdateAssessment }) {
       </div>
 
       <div>Heart rate</div>
-      <div><Input type="number" onChange={onUpdateAssessment('heartRate')} value={assessment.heartRate} unit="bps" /></div>
+      <div><Input type="number" onChange={onUpdateAssessment('heartRate')} value={assessment.heartRate} unit="bpm" /></div>
 
       <div>Weight</div>
       <div><Input type="number" onChange={onUpdateAssessment('weight')} value={assessment.weight} unit="kg" /></div>
@@ -65,7 +65,7 @@ function EditAssessment({ user, assessment, onDone, onUpdateAssessment }) {
       <div>Lean Mass</div>
       <div><Input type="number" onChange={onUpdateAssessment('bfLeanMass')} value={assessment.bfLeanMass} unit="kg" /></div>
 
-      <div>bfPercentage</div>
+      <div>Body Fat</div>
       <div><Input type="number" onChange={onUpdateAssessment('bfPercentage')} value={assessment.bfPercentage} unit="%" /></div>
 
       <div className="sm:col-span-2 text-lg underline my-4">Flexibility</div>
@@ -79,7 +79,7 @@ function EditAssessment({ user, assessment, onDone, onUpdateAssessment }) {
       <div>Other</div>
       <div><Input type="text" onChange={onUpdateAssessment('flOther')} value={assessment.flOther} /></div>
 
-      <div className="sm:col-span-2 text-lg underline my-4 bg-red-600 text-yellow-200">Some other kind of measurement - what should this heading say?</div>
+      <div className="sm:col-span-2 text-lg underline my-4">Functional</div>
 
       <div>Core Test</div>
       <div><Input type="text" onChange={onUpdateAssessment('coreTest')} value={assessment.coreTest} /></div>
