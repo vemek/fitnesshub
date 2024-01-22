@@ -1,47 +1,46 @@
-const GRID_COLS = Object.freeze([
-  "grid-cols-1",
-  "grid-cols-[9rem_1fr]",
-  "grid-cols-[9rem_1fr_1fr]",
-  "grid-cols-[9rem_1fr_1fr_1fr]",
-]);
+import Table from './Table.js';
+import TableRow from './TableRow.js';
+import TableCell from './TableCell.js';
 
 function Measurements({assessments}) {
+
+  const neckRow = assessments.map(assessment => {
+    return (<TableCell>{assessment.msNeck} cm</TableCell>);
+  });
+  const upperArmRow = assessments.map(assessment => {
+    return (<TableCell>{assessment.msUpperArm} cm</TableCell>);
+  });
+  const chestRow = assessments.map(assessment => {
+    return (<TableCell>{assessment.msChest} cm</TableCell>);
+  });
+  const upperAbsRow = assessments.map(assessment => {
+    return (<TableCell>{assessment.msUpperAbs} cm</TableCell>);
+  });
+  const lowerAbsRow = assessments.map(assessment => {
+    return (<TableCell>{assessment.msLowerAbs} cm</TableCell>);
+  });
+  const hipsRow = assessments.map(assessment => {
+    return (<TableCell>{assessment.msHips} cm</TableCell>);
+  });
+  const thighRow = assessments.map(assessment => {
+    return (<TableCell>{assessment.msThigh} cm</TableCell>);
+  });
+  const calfRow = assessments.map(assessment => {
+    return (<TableCell>{assessment.msCalf} cm</TableCell>);
+  });
+
   // neck, upper arm, chest, upper abs, lower abs, hips, thigh, calf
-  const headerRow = [
-    <div className="bg-slate-200 rounded-tl"></div>
-  ].concat(assessments.map((assessment, i) => {
-    const assessmentTitle = i === 0 ? "Initial Assessment" : `Reassessment ${i}`;
-    const roundedClass = i === assessments.length - 1 ? "rounded-tr" : "";
-    return (<div className={`p-1 text-lg bg-slate-200 ${roundedClass}`}>{assessmentTitle}</div>);
-  }));
-
-  const neckRow = [
-    <div className="p-1 text-lg bg-slate-200">Neck</div>
-  ].concat(assessments.map(a => {
-    return (<div className="p-1">{a.msNeck} cm</div>);
-  }));
-
-  const heartRateRow = [
-    <div className="p-1 text-lg bg-slate-200">Heart rate</div>
-  ].concat(assessments.map(a => {
-    return (<div className="p-1">{a.heartRate} bps</div>);
-  }));
-
-  const weightRow = [
-    <div className="p-1 text-lg bg-slate-200 rounded-bl">Weight</div>
-  ].concat(assessments.map(a => {
-    return (<div className="p-1">{a.weight} kg</div>);
-  }));
-
-  const grid_cols_class = GRID_COLS[assessments.length];
-
   return (
-    <div className={`grid ${grid_cols_class} mb-4 bg-slate-100 rounded`}>
-      {headerRow}
-      {neckRow}
-      {heartRateRow}
-      {weightRow}
-    </div>
+    <Table numCols={assessments.length}>
+      <TableRow title="Neck">{neckRow}</TableRow>
+      <TableRow title="Upper Arm">{upperArmRow}</TableRow>
+      <TableRow title="Chest">{chestRow}</TableRow>
+      <TableRow title="Upper Abs">{upperAbsRow}</TableRow>
+      <TableRow title="Lower Abs">{lowerAbsRow}</TableRow>
+      <TableRow title="Hips">{hipsRow}</TableRow>
+      <TableRow title="Thigh">{thighRow}</TableRow>
+      <TableRow title="Calf" lastRow>{calfRow}</TableRow>
+    </Table>
   );
 }
 
