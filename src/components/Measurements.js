@@ -31,16 +31,19 @@ function Measurements({assessments}) {
 
   // neck, upper arm, chest, upper abs, lower abs, hips, thigh, calf
   return (
-    <Table numCols={assessments.length}>
-      <TableRow title="Neck">{neckRow}</TableRow>
-      <TableRow title="Upper Arm">{upperArmRow}</TableRow>
-      <TableRow title="Chest">{chestRow}</TableRow>
-      <TableRow title="Upper Abs">{upperAbsRow}</TableRow>
-      <TableRow title="Lower Abs">{lowerAbsRow}</TableRow>
-      <TableRow title="Hips">{hipsRow}</TableRow>
-      <TableRow title="Thigh">{thighRow}</TableRow>
-      <TableRow title="Calf" lastRow>{calfRow}</TableRow>
-    </Table>
+    <>
+      <div className="text-lg underline my-4">Measurements</div>
+      <Table numCols={assessments.length}>
+        <TableRow title="Neck">{neckRow}</TableRow>
+        <TableRow title="Upper Arm">{upperArmRow}</TableRow>
+        <TableRow title="Chest">{chestRow}</TableRow>
+        <TableRow title="Upper Abs">{upperAbsRow}</TableRow>
+        <TableRow title="Lower Abs">{lowerAbsRow}</TableRow>
+        <TableRow title="Hips">{hipsRow}</TableRow>
+        <TableRow title="Thigh">{thighRow}</TableRow>
+        <TableRow title="Calf" lastRow>{calfRow}</TableRow>
+      </Table>
+    </>
   );
 }
 

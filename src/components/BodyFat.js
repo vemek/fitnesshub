@@ -22,14 +22,17 @@ function BodyFat({ assessments }) {
     return (<TableCell>{assessment.bfPercentage} cm</TableCell>);
   });
   return (
-    <Table numCols={assessments.length}>
-      <TableRow title="Bicep">{bicepRow}</TableRow>
-      <TableRow title="Tricep">{tricepRow}</TableRow>
-      <TableRow title="Subscap">{subscapRow}</TableRow>
-      <TableRow title="Super">{superRow}</TableRow>
-      <TableRow title="Lean Mass">{leanMassRow}</TableRow>
-      <TableRow title="Body Fat">{bodyFatRow}</TableRow>
-    </Table>
+    <>
+      <div className="text-lg underline my-4">Body Fat</div>
+      <Table numCols={assessments.length}>
+        <TableRow title="Bicep">{bicepRow}</TableRow>
+        <TableRow title="Tricep">{tricepRow}</TableRow>
+        <TableRow title="Subscap">{subscapRow}</TableRow>
+        <TableRow title="Super">{superRow}</TableRow>
+        <TableRow title="Lean Mass">{leanMassRow}</TableRow>
+        <TableRow title="Body Fat">{bodyFatRow}</TableRow>
+      </Table>
+    </>
   );
 }
 export default BodyFat;
