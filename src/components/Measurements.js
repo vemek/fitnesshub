@@ -2,7 +2,7 @@ import Table from './Table.js';
 import TableRow from './TableRow.js';
 import TableCell from './TableCell.js';
 
-function Measurements({assessments}) {
+function Measurements({ assessments }) {
 
   const neckRow = assessments.map(assessment => {
     return (<TableCell>{assessment.msNeck} cm</TableCell>);

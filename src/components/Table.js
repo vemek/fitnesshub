@@ -1,8 +1,8 @@
 const GRID_COLS = Object.freeze([
   "grid-cols-1",
-  "grid-cols-[9rem_1fr]",
-  "grid-cols-[9rem_1fr_1fr]",
-  "grid-cols-[9rem_1fr_1fr_1fr]",
+  "grid-cols-[12rem_1fr]",
+  "grid-cols-[12rem_1fr_1fr]",
+  "grid-cols-[12rem_1fr_1fr_1fr]",
 ]);
 
 function Table({ numCols, children }) {

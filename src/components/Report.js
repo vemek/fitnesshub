@@ -1,6 +1,9 @@
 import Stats from './Stats.js';
 import Measurements from './Measurements.js';
 import BodyFat from './BodyFat.js';
+import Flexibility from './Flexibility.js';
+import Functional from './Functional.js';
+import Posture from './Posture.js';
 
 function Report({user}) {
   return (
@@ -24,6 +27,9 @@ function Report({user}) {
       <Stats assessments={user.assessments} />
       <Measurements assessments={user.assessments} />
       <BodyFat assessments={user.assessments} />
+      <Flexibility assessments={user.assessments} />
+      <Functional assessments={user.assessments} />
+      <Posture assessments={user.assessments} />
     </div>
   );
 }
